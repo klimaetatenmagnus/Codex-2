@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev:client": "vite",
-    "dev:server": "cross-env LOG_SOAP=1 NODE_OPTIONS='--no-experimental-strip-types --loader ts-node/esm' nodemon server/index.ts",
-    "dev:buildings": "cross-env LOG_SOAP=1 nodemon --exec \"node --no-experimental-strip-types --loader ts-node/esm\" services/building-info-service/index.ts",
+    "dev:server": "cross-env LOG_SOAP=1 nodemon --watch server --exec \"node --loader ts-node/esm server/index.ts\"",
+    "dev:buildings": "cross-env LOG_SOAP=1 nodemon --watch services/building-info-service --exec \"node --loader ts-node/esm services/building-info-service/index.ts\"",
     "dev:subsidy": "node services/subsidy-service/index.js",
+    "dev:solar": "cross-env PORT=4003 nodemon --watch services/solar-service --exec \"node services/solar-service/index.js\"",
     "dev": "concurrently -k -n client,server,buildings,solar -c blue,green,yellow,magenta \"pnpm run dev:client\" \"pnpm run dev:server\" \"pnpm run dev:buildings\" \"pnpm run dev:solar\"",
     "dev:local": "cross-env API_ENV=test concurrently -k -n client,server,buildings,subsidy -c blue,green,yellow,magenta \"pnpm run dev:client\" \"pnpm run dev:server\" \"pnpm run dev:buildings\" \"pnpm run dev:subsidy\"",
     "start:prod": "cross-env API_ENV=prod ts-node server/index.ts",
@@ -15,7 +16,6 @@
     "preview": "vite preview",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "start:solar-service": "node services/solar-service/index.js",
-    "dev:solar": "cross-env PORT=4003 NODE_OPTIONS='--no-experimental-strip-types' nodemon services/solar-service/index.js",
     "test:matrikkel": "node scripts/testMatrikkel.cjs",
     "test:e2e:live": "cross-env LIVE=1 LOG_SOAP=1 node --loader ts-node/esm scripts/test-e2e-building.ts"
   },

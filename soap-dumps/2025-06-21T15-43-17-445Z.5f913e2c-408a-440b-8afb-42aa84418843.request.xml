@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:sto="http://matrikkel.statkart.no/matrikkelapi/wsapi/v1/service/store"
+               xmlns:dom="http://matrikkel.statkart.no/matrikkelapi/wsapi/v1/domain"
+               xmlns:mat="http://matrikkel.statkart.no/matrikkelapi/wsapi/v1/domain/matrikkelenhet"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <soap:Body>
+    <sto:getObject>
+      <sto:id xsi:type="mat:MatrikkelenhetId">
+        <dom:value>510390945</dom:value>
+      </sto:id>
+      <sto:matrikkelContext>
+        <dom:locale>no_NO_B</dom:locale>
+        <dom:brukOriginaleKoordinater>false</dom:brukOriginaleKoordinater>
+        <dom:koordinatsystemKodeId><dom:value>25833</dom:value></dom:koordinatsystemKodeId>
+        <dom:systemVersion>trunk</dom:systemVersion>
+        <dom:klientIdentifikasjon>store-client</dom:klientIdentifikasjon>
+        <dom:snapshotVersion><dom:timestamp>9999-01-01T00:00:00+01:00</dom:timestamp></dom:snapshotVersion>
+      </sto:matrikkelContext>
+    </sto:getObject>
+  </soap:Body>
+</soap:Envelope>
